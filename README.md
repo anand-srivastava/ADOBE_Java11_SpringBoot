@@ -62,3 +62,35 @@ public class HelloWorld {
 ==================================================================
 openjdk 11
 ==================================================================
+java --list-modules
+
+Named Modules:
+	all modules follow java 9 JPMS
+
+Unnamed modules
+automatic modules
+--------------------------------
+
+Each java project --> one module --> each project contains module-info.java
+---------------------------------------------------------------------------
+
+Java Project => multi module ==> each module has module-info.java
+--------------------------------------------------------------------
+
+jdeps  -s jackson.databind.jar
+---------------------------------------------------------------------
+
+ServiceLoader
+
+Create a file in client: [ file name is same as fully qulafied interface name within "META-iNF/service"]
+
+META-INF/services/com.example.CodecSet
+com.example.impl.StandardCodecs    
+com.example.impl.Sampleodecs  
+
+Client code:
+ private static ServiceLoader<CodecSet> codecSetLoader
+     = ServiceLoader.load(CodecSet.class);
+---------------------------------------------------------------------------
+
+ServiceLoader==> Maven Multi-module project using Java 9 module system
