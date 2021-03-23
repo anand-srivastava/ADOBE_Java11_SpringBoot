@@ -21,7 +21,7 @@ public class HttpClientExample {
         // httpGetRequest();
         // httpPostRequest();
         // asynchronousGetRequest();
-         pushRequest();
+          pushRequest();
     }
 
     public static void httpGetRequest() throws URISyntaxException, IOException, InterruptedException {

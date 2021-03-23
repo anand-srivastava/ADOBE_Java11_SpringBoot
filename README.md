@@ -218,4 +218,69 @@ Day 2:
 	9) FLightRecorder and JMC
 	10) EpsilonGC
 
-	Resume after Tea break
+	11) New collection factory methods: (of)
+		Prior versions immutable:
+			List<String> list = Arrays.asList("a","b","c");
+			was not supporting add() operations
+
+		 List<String> nlist = List.of("a","b");
+		 Set.of()
+		 Map.of()
+	---------------------------------
+	GC:
+		1) Serial, Parallel, CMS
+	EpsilonGC is no-op GC ==> No Garbage collection ==> support allocation but not GC
+		Why?
+			Short runtime
+			Performance Testing
+------------------------------------------------------------------
+	FLightRecorder along with Java Mission Control ==> Monitoring 
+		for Health Check of application
+		Memory, Thread, Exceptions,
+----------------------------------------------------------------------
+Java Flight Recorder (JFR) is a tool for collecting diagnostic and profiling data about a running Java application.
+
+java -XX:StartFlightRecording=duration=30s,settings=profile,filename=leakinfo.jfr MemoryLeak
+
+or jcmd
+-----------------------------------------------
+
+12) Nest based access control
+
+	class Outer {
+			private String name;
+
+			public class Inner {
+					public void test() {
+							return "test" + name;
+					}
+			}
+			public class Inner2 {
+					public void test() {
+							return "test" + name;
+					}
+			}
+	}
+
+
+	Prior to Java 11:
+
+		public static String access$000() {
+			return name;
+		}
+
+		and in test()
+
+		return "test" + $a.access$000();
+	===========
+
+	Reflection API:
+	Class<?> getNestHost()
+	Class[] getNestMembers()
+==========================================================
+
+HttpClient
+	modified HttpUrlConnection
+	Apache HttpClient, RestTemplate, WebClient
+
+Future and CompletableFuture [stages]
